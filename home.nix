@@ -90,6 +90,7 @@
       pull.rebase = "false";
       credential.helper = "osxkeychain";
       init.defaultBranch = "main";
+      github.user = "DavidRambo";
     };
     difftastic = {
       enable = true;
