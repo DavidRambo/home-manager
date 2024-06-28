@@ -23,6 +23,8 @@
     # # "Hello, world!" when run.
     # pkgs.hello
 
+    pkgs.erdtree
+    pkgs.fd
     pkgs.fzf
     pkgs.lsd
     pkgs.ripgrep
