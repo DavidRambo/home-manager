@@ -87,5 +87,8 @@
       credential.helper = "osxkeychain";
       init.defaultBranch = "main";
     };
+    difftastic = {
+      enable = true;
+    };
   };
 }
