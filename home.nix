@@ -24,6 +24,7 @@
     # pkgs.hello
 
     pkgs.fzf
+    pkgs.lsd
     pkgs.ripgrep
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
