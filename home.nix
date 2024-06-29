@@ -23,6 +23,7 @@
     # # "Hello, world!" when run.
     # pkgs.hello
 
+    bat
     erdtree
     fd
     fzf
@@ -81,6 +82,13 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "Catppuccin Latte";
+    };
+  };
 
   programs.git = {
     enable = true;
