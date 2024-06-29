@@ -75,7 +75,7 @@
   #  /etc/profiles/per-user/david/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "~/nvim-macos-arm64/bin/nvim";
   };
 
   # Let Home Manager install and manage itself.
