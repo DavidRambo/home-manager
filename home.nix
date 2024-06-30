@@ -27,8 +27,12 @@
     erdtree
     fd
     fzf
+    htop
+    just
+    lazygit
     lsd
     ripgrep
+    uv
     zoxide
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
