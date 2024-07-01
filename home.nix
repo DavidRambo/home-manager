@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "david";
@@ -23,6 +25,7 @@
     # # "Hello, world!" when run.
     # pkgs.hello
 
+    alejandra
     bat
     erdtree
     fd
@@ -34,6 +37,19 @@
     ripgrep
     uv
     zoxide
+
+    # quickemu dependencies
+    bash
+    cdrtools
+    # coreutils
+    jq
+    # python3
+    qemu
+    samba
+    socat
+    swtpm
+    # usbutils  # not available on aarch64.darwin
+    zsync
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -94,6 +110,17 @@
 
   programs.bat = {
     enable = true;
+    themes = {
+      "catppuccin-latte" = {
+        src = pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "bat";
+          rev = "b19bea35a85a32294ac4732cad5b0dc6495bed32";
+          hash = "sha256-POoW2sEM6jiymbb+W/9DKIjDM1Buu1HAmrNP0yC2JPg=";
+        };
+        file = "themes/Catppuccin Latte.tmTheme";
+      };
+    };
     config = {
       theme = "Catppuccin Latte";
     };
