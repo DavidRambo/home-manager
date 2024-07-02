@@ -99,6 +99,8 @@
   #
   home.sessionVariables = {
     EDITOR = "~/nvim-macos-arm64/bin/nvim";
+    LEDGER_FILE = "~/finance/2024.journal";
+    ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
   };
 
   # Let Home Manager install and manage itself.
