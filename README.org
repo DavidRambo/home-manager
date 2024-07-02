@@ -1,0 +1,19 @@
+* Setup
+
+** Install nix
+
+I used [[https://zero-to-nix.com/start/install][Determinate Systems' installer]] to install nix.
+
+: curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
+** First-time: Install Home Manager
+
+For the first-time setup, I followed Home Manager's instructions for a [[https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-standalone][flake-based standalone setup]].
+
+** Standing up from this config
+
+I think all that needs to be done is a ~nix run~ command, after which Home Manager may be used as usual (via ~home-manager switch~, e.g.).
+Either reference this repository here or via its local path on the system.
+For instance:
+
+: nix run github:DavidRambo/home-manager
