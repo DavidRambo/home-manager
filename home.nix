@@ -258,7 +258,11 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    initExtra = "source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh";
+    initExtra = ''
+      source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
+
+      export PATH="$XDG_CONFIG_HOME/emacs/bin":$PATH
+    '';
     shellAliases = {
       # Directory shortcuts
       cdn = "cd ~/notes/";
