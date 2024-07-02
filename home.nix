@@ -8,6 +8,7 @@
   home.username = "david";
   home.homeDirectory = "/Users/david";
   xdg.cacheHome = "/Users/david/.config/cache";
+  xdg.configHome = "/Users/david/.config";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -72,11 +73,6 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    # lhs is the destination, e.g. xdg.configFile."fish/fish.config".source
-    # rhs is the source file, e.g. if I had a subdirectory here in home-manager/ called
-    # dotfiles: ./dotfiles/fish/fish.config
-    # This is a bit like chezmoi, though without the editing in place and then
-    # updating the source file.
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
