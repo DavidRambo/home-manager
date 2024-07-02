@@ -293,10 +293,13 @@
       # # # # # # #
       # Git Aliases
       # # # # # # #
+      gs = "git status";
       gits = "git status";
       gitf = "git fetch";
       gita = "git add";
       gitcm = "git commit -m";
+      gcm = "git commit -m";
+      gch = "git checkout";
 
       # binary aliases
       cat = "bat";
