@@ -38,6 +38,7 @@
     ripgrep
     uv
     zoxide
+    zsh
 
     # quickemu dependencies
     bash
@@ -79,6 +80,16 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+  };
+
+  # $XDG_CONFIG_HOME = ~/.config
+  xdg.configFile = {
+    "zsh/catppuccin-syntax".source = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "zsh-syntax-highlighting";
+      rev = "06d519c20798f0ebe275fc3a8101841faaeee8ea";
+      hash = "sha256-Q7KmwUd9fblprL55W0Sf4g7lRcemnhjh4/v+TacJSfo=";
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -126,6 +137,26 @@
     };
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    colors = {
+      # Catppuccin-Latte
+      bg = "#eff1f5";
+      "bg+" = "#ccd0da";
+      spinner = "#dc8a78";
+      hl = "#d20f39";
+      fg = "#4c4f69";
+      header = "#d20f39";
+      info = "#8839ef";
+      pointer = "#dc8a78";
+      marker = "#dc8a78";
+      "fg+" = "#4c4f69";
+      "prompt" = "#8839ef";
+      "hl+" = "#d20f39";
+    };
+  };
+
   programs.git = {
     enable = true;
     userEmail = "davidrambo@mailfence.com";
@@ -141,6 +172,100 @@
     };
     difftastic = {
       enable = true;
+    };
+  };
+
+  programs.pyenv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.powerline-go = {
+    enable = true;
+    modules = [
+      "cwd"
+      "gitlite"
+    ];
+    modulesRight = [
+      "venv"
+    ];
+    settings = {
+      cwd-mode = "plain"; # fancy, semifancy, plain, dironly
+      cwd-max-depth = 4;
+    };
+    newline = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = ["--cmd cd"];
+  };
+
+  programs.zsh = {
+    enable = true;
+    dotDir = ".config/zsh";
+    # history.path = "$ZDOTDIR/.zsh_history";
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    initExtra = "source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh";
+    shellAliases = {
+      # Directory shortcuts
+      cdn = "cd ~/notes/";
+      cdq = "cd ~/repos/qmk_firmware/";
+      cdd = "cd ~/repos/dnr-hugo/";
+      cdz = "cd $ZDOTDIR";
+      cde = "cd $XDG_CONFIG_HOME/doom";
+      cdnv = "cd $XDG_CONFIG_HOME/nvim/";
+      cdw = "cd $XDG_CONFIG_HOME/wezterm/";
+      cdc = "cd ~/repos/code_projects/";
+
+      # dotfile shortcuts
+      nv = "~/nvim-macos-arm64/bin/nvim";
+      nvim = "nvim-macos-arm64/bin/nvim";
+      vz = "nvim $ZDOTDIR/.zshrc";
+      vn = "nvim ~/.config/nvim/";
+      vv = "nvim ~/.vimrc";
+      vza = "nvim $ZDOTDIR/aliases";
+      vyabai = "nvim $XDG_CONFIG_HOME/yabai/yabairc";
+      vskhd = "nvim $XDG_CONFIG_HOME/skhd/skhdrc";
+      nvnv = "nv $XDG_CONFIG_HOME/nvim/";
+      nvh = "nv $XDG_CONFIG_HOME/home-manager/home.nix";
+
+      copydot = "cp -a $ZDOTDIR ~/Dropbox\ \(Maestral\)/backup/zsh/";
+
+      sshnas = "ssh rambo@192.168.50.237";
+
+      # # # # # # #
+      # Git Aliases
+      # # # # # # #
+      gits = "git status";
+      gitf = "git fetch";
+      gita = "git add";
+      gitcm = "git commit -m";
+
+      # binary aliases
+      cat = "bat";
+
+      du = "dust";
+
+      el = "erd -H -L 1";
+      ela = "erd -H -L 1 -.";
+
+      ls = "lsd";
+      lsa = "lsd -a";
+      ll = "lsd -l";
+      lla = "ls -la";
+      lt = "ls --tree";
+
+      python = "python3";
+      pip = "pip3";
+      pym = "python3 -m";
+
+      vnv = "python3 -m venv venv && source venv/bin/activate && pip install --upgrade pip";
+      uvv = "uv venv venv"; # Create new virtual environment in ./venv/
+      sv = "source *venv*/bin/activate";
     };
   };
 }
