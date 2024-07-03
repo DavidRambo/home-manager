@@ -7,8 +7,6 @@
   # manage.
   home.username = "david";
   home.homeDirectory = "/Users/david";
-  xdg.cacheHome = "/Users/david/.config/cache";
-  xdg.configHome = "/Users/david/.config";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -109,6 +107,8 @@
   #  /etc/profiles/per-user/david/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    XDG_CACHE_HOME = "/Users/david/.config/cache";
+    XDG_CONFIG_HOME = "/Users/david/.config";
     EDITOR = "~/nvim-macos-arm64/bin/nvim";
     LEDGER_FILE = "~/finance/2024.journal";
     ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
