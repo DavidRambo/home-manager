@@ -184,7 +184,7 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      git_status.disabled = true;
+      # git_status.disabled = true;
       palette = "catppuccin_latte";
       palettes.catppuccin_latte = {
         rosewater = "#dc8a78";
