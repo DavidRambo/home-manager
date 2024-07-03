@@ -7,8 +7,13 @@
   # manage.
   home.username = "david";
   home.homeDirectory = "/Users/david";
-  xdg.cacheHome = "/Users/david/.config/cache";
-  xdg.configHome = "/Users/david/.config";
+
+  # These do not work : (
+  # So I set them in home.sessionVariables
+  # xdg.cacheHome = "/Users/david/.config/cache";
+  # xdg.configHome = "/Users/david/.config";
+
+  # users.users.david.shell = pkgs.fish;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -37,8 +42,13 @@
     lsd
     ripgrep
     uv
+    wezterm
     zoxide
     zsh
+
+    fish
+    fishPlugins.bass
+    fishPlugins.tide
 
     # quickemu dependencies
     bash
@@ -90,6 +100,7 @@
       rev = "06d519c20798f0ebe275fc3a8101841faaeee8ea";
       hash = "sha256-Q7KmwUd9fblprL55W0Sf4g7lRcemnhjh4/v+TacJSfo=";
     };
+    "wezterm/wezterm.lua".source = ./dots/wezterm.lua;
   };
 
   # Home Manager can also manage your environment variables through
@@ -110,8 +121,8 @@
   #
   home.sessionVariables = {
     EDITOR = "~/nvim-macos-arm64/bin/nvim";
-    LEDGER_FILE = "~/finance/2024.journal";
     ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
+    LEDGER_FILE = "~/finance/2024.journal";
   };
 
   # Let Home Manager install and manage itself.
@@ -137,8 +148,153 @@
     };
   };
 
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+
+      fish_vi_key_bindings
+
+      abbr --erase cd &>/dev/null
+      abbr --erase cdi &>/dev/null
+
+      # Location for nvm directory, since bass assumes ~/.nvm
+      set -gx NVM_DIR ~/.config/nvm
+    '';
+    plugins = [
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide;
+        # one-line output: tide configure --auto --style=Lean --prompt_colors='True color' --show_time=No
+        # --lean_prompt_height='Two lines' --prompt_connection=Disconnected
+        # --prompt_spacing=Compact --icons='Few icons' --transient=Yes
+      }
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass;
+      }
+      # {
+      #   name = "tide";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "ilancosman";
+      #     repo = "tide";
+      #     rev = "a34b0c2809f665e854d6813dd4b052c1b32a32b4";
+      #     hash = "sha256-ZyEk/WoxdX5Fr2kXRERQS1U1QHH3oVSyBQvlwYnEYyc=";
+      #   };
+      # }
+      {
+        name = "catppuccin_fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "fish";
+          rev = "a3b9eb5eaf2171ba1359fe98f20d226c016568cf";
+          hash = "sha256-shQxlyoauXJACoZWtRUbRMxmm10R8vOigXwjxBhG8ng=";
+        };
+      }
+      # {
+      #   name = "bass";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "edc";
+      #     repo = "bass";
+      #     rev = "79b62958ecf4e87334f24d6743e5766475bcf4d0";
+      #     hash = "sha256-3d/qL+hovNA4VMWZ0n1L+dSM1lcz7P5CQJyy+/8exTc=";
+      #   };
+      # }
+      {
+        name = "fish-nvm";
+        src = pkgs.fetchFromGitHub {
+          owner = "fabioantunes";
+          repo = "fish-nvm";
+          rev = "57ddb124cc0b6ae7e2825855dd34f33b8492a35b";
+          sha256 = "00gbvzh4l928rbnyjaqi8fc6dcpr0q4m6rd265gxfy4aqph6j7f0";
+          # hash = "sha256-wB1p4MWKeNdfMaJlUwkG+bJmmEMRK+ntykgkSuDf6wE=";
+        };
+      }
+    ];
+    shellAbbrs = {
+      "cat" = "bat";
+      "du" = "dust";
+      "ga" = {
+        position = "command";
+        expansion = "git add";
+      };
+      "gita" = "git add";
+      "gch" = "git checkout";
+      "gitcm" = {
+        position = "command";
+        setCursor = true;
+        expansion = "git commit -m \"%\"";
+      };
+      "gcm" = {
+        position = "command";
+        setCursor = true;
+        expansion = "git commit -m \"%\"";
+      };
+      "gl" = "git log";
+      "gr" = "git rebase";
+      "gits" = "git status";
+      "gs" = "git status";
+      "gss" = "git status --short";
+
+      # Pipe to grep and place cursor at %.
+      "G" = {
+        position = "anywhere";
+        setCursor = true;
+        expansion = "| grep '%'";
+      };
+
+      "hla" = "hledger add";
+      "ht" = "hledger -f $HOME/notes/time_ledger.timedot bal";
+
+      "pn" = "pnpm";
+
+      "uvv" = "uv venv venv";
+      "sv" = "source venv/bin/activate.fish";
+    };
+    shellAliases = {
+      # So that z and zi are still useable.
+      "cd" = "__zoxide_z";
+      "cdi" = "__zoxide_zi";
+
+      "cdc" = "cd ~/repos/code_projects/";
+      "cdd" = "cd ~/repos/dnr-hugo/";
+      "cde" = "cd ~/.config/doom";
+      "cdf" = "cd ~/.config/fish";
+      "cdn" = "cd ~/notes/";
+      "cdnv" = "cd ~/.config/nvim/";
+      "cdq" = "cd ~/repos/qmk_firmware/";
+      "cdw" = "cd ~/.config/wezterm/";
+
+      "el" = "erd -H -L 1";
+      "ela" = "erd -H -L 1 -.";
+
+      "ls" = "lsd";
+      "lsa" = "lsd -a";
+      "ll" = "lsd -l";
+      "lla" = "lsd -la";
+      # "lt" = "ls --tree";
+      "l." = "lsd -d .* --color=auto";
+
+      "nvim" = "~/nvim-macos-arm64/bin/nvim";
+      "nv" = "~/nvim-macos-arm64/bin/nvim";
+
+      "nvf" = "nv ~/.config/fish/config.fish";
+      "nvfa" = "nv ~/.config/fish/alias.fish";
+      "nvh" = "nv ~/.config/home-manager/home.nix";
+      "nvnv" = "nv ~/.config/nvim/init.lua";
+      "nvskhd" = "nv ~/.config/skhd/skhdrc";
+      "nvw" = "nv ~/.config/wezterm/wezterm.lua";
+      "nvy" = "nv ~/.config/yabai/yabairc";
+      "nvz" = "nv ~/.config/zsh/.zshrc";
+      "nvza" = "nv ~/.config/zsh/aliases";
+
+      "sshnas" = "ssh rambo@192.168.50.237";
+    };
+  };
+
   programs.fzf = {
     enable = true;
+    enableFishIntegration = true;
     enableZshIntegration = true;
     colors = {
       # Catppuccin-Latte
@@ -177,11 +333,13 @@
 
   programs.pyenv = {
     enable = true;
+    enableFishIntegration = true;
     enableZshIntegration = true;
   };
 
   programs.starship = {
     enable = true;
+    enableFishIntegration = false;
     enableZshIntegration = true;
     settings = {
       git_status.disabled = true;
@@ -245,10 +403,15 @@
     };
   };
 
+  programs.wezterm = {
+    enable = true;
+  };
+
   programs.zoxide = {
     enable = true;
+    enableFishIntegration = true;
     enableZshIntegration = true;
-    options = ["--cmd cd"];
+    # options = ["--cmd cd"];
   };
 
   programs.zsh = {
@@ -258,12 +421,19 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    envExtra = ''
+      export XDG_CONFIG_HOME="$HOME/.config"
+      export XDG_CACHE_HOME="$HOME/.cache"
+    '';
     initExtra = ''
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
       export PATH="$XDG_CONFIG_HOME/emacs/bin":$PATH
     '';
     shellAliases = {
+      cd = "__zoxide_z";
+      cdi = "__zoxide_zi";
+
       # Directory shortcuts
       cdn = "cd ~/notes/";
       cdq = "cd ~/repos/qmk_firmware/";
@@ -276,15 +446,16 @@
 
       # dotfile shortcuts
       nv = "~/nvim-macos-arm64/bin/nvim";
-      nvim = "nvim-macos-arm64/bin/nvim";
+      nvim = "~/nvim-macos-arm64/bin/nvim";
       vz = "nvim $ZDOTDIR/.zshrc";
       vn = "nvim ~/.config/nvim/";
       vv = "nvim ~/.vimrc";
       vza = "nvim $ZDOTDIR/aliases";
       vyabai = "nvim $XDG_CONFIG_HOME/yabai/yabairc";
       vskhd = "nvim $XDG_CONFIG_HOME/skhd/skhdrc";
-      nvnv = "nv $XDG_CONFIG_HOME/nvim/";
+      nvnv = "nv $XDG_CONFIG_HOME/nvim/init.lua";
       nvh = "nv $XDG_CONFIG_HOME/home-manager/home.nix";
+      nvw = "nv $XDG_CONFIG_HOME/wezterm/wezterm.lua";
 
       copydot = "cp -a $ZDOTDIR ~/Dropbox\ \(Maestral\)/backup/zsh/";
 
