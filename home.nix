@@ -84,7 +84,6 @@
     # '';
   };
 
-  # $XDG_CONFIG_HOME = ~/.config
   xdg.configFile = {
     "zsh/catppuccin-syntax".source = pkgs.fetchFromGitHub {
       owner = "catppuccin";
@@ -92,7 +91,9 @@
       rev = "06d519c20798f0ebe275fc3a8101841faaeee8ea";
       hash = "sha256-Q7KmwUd9fblprL55W0Sf4g7lRcemnhjh4/v+TacJSfo=";
     };
+    "skhd/skhdrc".source = ./dots/skhdrc;
     "wezterm/wezterm.lua".source = ./dots/wezterm.lua;
+    "yabai/yabairc".source = ./dots/yabairc;
   };
 
   # Home Manager can also manage your environment variables through
@@ -271,9 +272,9 @@
       "nvfa" = "nv ~/.config/fish/alias.fish";
       "nvh" = "nv ~/.config/home-manager/home.nix";
       "nvnv" = "nv ~/.config/nvim/init.lua";
-      "nvskhd" = "nv ~/.config/skhd/skhdrc";
-      "nvw" = "nv ~/.config/wezterm/wezterm.lua";
-      "nvy" = "nv ~/.config/yabai/yabairc";
+      "nvskhd" = "nv ~/.config/home-manager/dots/skhdrc";
+      "nvw" = "nv ~/.config/home-manager/dots/wezterm.lua";
+      "nvy" = "nv ~/.config/home-manager/dots/yabairc";
       "nvz" = "nv ~/.config/zsh/.zshrc";
       "nvza" = "nv ~/.config/zsh/aliases";
 
@@ -408,10 +409,6 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    envExtra = ''
-      export XDG_CONFIG_HOME="$HOME/.config"
-      export XDG_CACHE_HOME="$HOME/.cache"
-    '';
     initExtra = ''
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
@@ -423,6 +420,8 @@
       fi
     '';
     shellAliases = {
+      cd = "__zoxide_z";
+      cdi = "__zoxide_zi";
       # Directory shortcuts
       cdn = "cd ~/notes/";
       cdq = "cd ~/repos/qmk_firmware/";
@@ -440,8 +439,8 @@
       vn = "nvim ~/.config/nvim/";
       vv = "nvim ~/.vimrc";
       vza = "nvim $ZDOTDIR/aliases";
-      vyabai = "nvim $XDG_CONFIG_HOME/yabai/yabairc";
-      vskhd = "nvim $XDG_CONFIG_HOME/skhd/skhdrc";
+      vyabai = "nvim $XDG_CONFIG_HOME/home-manager/dots/yabairc";
+      vskhd = "nvim $XDG_CONFIG_HOME/home-manager/dots/skhdrc";
       nvnv = "nv $XDG_CONFIG_HOME/nvim/init.lua";
       nvh = "nv $XDG_CONFIG_HOME/home-manager/home.nix";
       nvw = "nv $XDG_CONFIG_HOME/wezterm/wezterm.lua";
@@ -453,6 +452,7 @@
       # # # # # # #
       # Git Aliases
       # # # # # # #
+      gl = "git log";
       gs = "git status";
       gits = "git status";
       gitf = "git fetch";

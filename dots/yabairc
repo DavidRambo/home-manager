@@ -1,0 +1,44 @@
+#!/usr/bin/env sh
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# global settings
+yabai -m config layout bsp
+yabai -m config window_placement second_child
+# mouse
+yabai -m config mouse_follows_focus off
+# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+yabai -m config focus_follows_mouse off
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
+
+# windows
+yabai -m config window_origin_display default
+yabai -m config window_placement second_child
+yabai -m config split_ratio 0.5
+yabai -m config auto_balance off
+yabai -m config window_topmost off
+yabai -m config window_shadow on
+yabai -m config window_border off
+yabai -m config window_border_width 4
+yabai -m config active_window_border_color 0xff775759
+yabai -m config normal_window_border_color 0xff555555
+yabai -m config insert_feedback_color 0xffd75f5f
+yabai -m config window_opacity on
+# yabai -m config active_window_opacity 0.95
+# yabai -m config normal_window_opacity 0.9
+
+# spacing
+yabai -m config top_padding 2
+yabai -m config bottom_padding 2
+yabai -m config left_padding 2
+yabai -m config right_padding 2
+yabai -m config window_gap 2
+
+yabai -m rule --add app="^(System Settings|Alfred Preferences|Activity Monitor|Dictionary)$" manage=off sticky=off
+yabai -m rule --add app="^(coconutBattery|Surfshark)$" manage=off sticky=on
+yabai -m rule --add app="^(Things|Messages|Contexts|Peg|Spotify|FaceTime|Installer|zoom.us|Transmission)$" manage=off sticky=off
+
+echo "yabai config loaded"
