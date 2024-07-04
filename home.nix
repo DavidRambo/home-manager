@@ -8,13 +8,6 @@
   home.username = "david";
   home.homeDirectory = "/Users/david";
 
-  # These do not work : (
-  # So I set them in home.sessionVariables
-  # xdg.cacheHome = "/Users/david/.config/cache";
-  # xdg.configHome = "/Users/david/.config";
-
-  # users.users.david.shell = pkgs.fish;
-
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -120,6 +113,8 @@
   #  /etc/profiles/per-user/david/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    XDG_CACHE_HOME = "/Users/david/.config/cache";
+    XDG_CONFIG_HOME = "/Users/david/.config";
     EDITOR = "~/nvim-macos-arm64/bin/nvim";
     ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
     LEDGER_FILE = "~/finance/2024.journal";
@@ -342,7 +337,7 @@
     enableFishIntegration = false;
     enableZshIntegration = true;
     settings = {
-      git_status.disabled = true;
+      # git_status.disabled = true;
       palette = "catppuccin_latte";
       palettes.catppuccin_latte = {
         rosewater = "#dc8a78";
@@ -429,6 +424,11 @@
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
       export PATH="$XDG_CONFIG_HOME/emacs/bin":$PATH
+
+      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
+      then
+          exec fish -l
+      fi
     '';
     shellAliases = {
       cd = "__zoxide_z";
