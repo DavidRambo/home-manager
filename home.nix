@@ -85,15 +85,15 @@
   };
 
   xdg.configFile = {
+    "skhd/skhdrc".source = ./dots/skhdrc;
+    "wezterm/wezterm.lua".source = ./dots/wezterm.lua;
+    "yabai/yabairc".source = ./dots/yabairc;
     "zsh/catppuccin-syntax".source = pkgs.fetchFromGitHub {
       owner = "catppuccin";
       repo = "zsh-syntax-highlighting";
       rev = "06d519c20798f0ebe275fc3a8101841faaeee8ea";
       hash = "sha256-Q7KmwUd9fblprL55W0Sf4g7lRcemnhjh4/v+TacJSfo=";
     };
-    "skhd/skhdrc".source = ./dots/skhdrc;
-    "wezterm/wezterm.lua".source = ./dots/wezterm.lua;
-    "yabai/yabairc".source = ./dots/yabairc;
   };
 
   # Home Manager can also manage your environment variables through
@@ -328,9 +328,9 @@
   };
 
   programs.starship = {
-    enable = true;
+    enable = false;
     enableFishIntegration = false;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
     settings = {
       # git_status.disabled = true;
       palette = "catppuccin_latte";
@@ -409,6 +409,18 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    plugins = [
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
+      {
+        name = "powerlevel10k-config";
+        src = ./dots;
+        file = ".p10k.zsh";
+      }
+    ];
     initExtra = ''
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
@@ -418,10 +430,10 @@
       then
           exec fish -l
       fi
+
+      eval "$(zoxide init --cmd cd zsh)"
     '';
     shellAliases = {
-      cd = "__zoxide_z";
-      cdi = "__zoxide_zi";
       # Directory shortcuts
       cdn = "cd ~/notes/";
       cdq = "cd ~/repos/qmk_firmware/";
