@@ -35,7 +35,6 @@
     lsd
     ripgrep
     uv
-    wezterm
     zoxide
     zsh
 
@@ -150,9 +149,6 @@
 
       fish_vi_key_bindings
 
-      abbr --erase cd &>/dev/null
-      abbr --erase cdi &>/dev/null
-
       # Location for nvm directory, since bass assumes ~/.nvm
       set -gx NVM_DIR ~/.config/nvm
     '';
@@ -208,6 +204,8 @@
     ];
     shellAbbrs = {
       "cat" = "bat";
+      "cd" = "z";
+      "cdi" = "zi";
       "du" = "dust";
       "ga" = {
         position = "command";
@@ -247,10 +245,6 @@
       "sv" = "source venv/bin/activate.fish";
     };
     shellAliases = {
-      # So that z and zi are still useable.
-      "cd" = "__zoxide_z";
-      "cdi" = "__zoxide_zi";
-
       "cdc" = "cd ~/repos/code_projects/";
       "cdd" = "cd ~/repos/dnr-hugo/";
       "cde" = "cd ~/.config/doom";
@@ -398,15 +392,13 @@
     };
   };
 
-  programs.wezterm = {
-    enable = true;
-  };
-
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
     # options = ["--cmd cd"];
+    # Since I want to use *both* z/zi and cd/cdi, I do not use the init option to setup cd/cdi aliases.
+    # Instead, I have manual aliases for zsh and manual abbreviations for fish.
   };
 
   programs.zsh = {
@@ -431,9 +423,6 @@
       fi
     '';
     shellAliases = {
-      cd = "__zoxide_z";
-      cdi = "__zoxide_zi";
-
       # Directory shortcuts
       cdn = "cd ~/notes/";
       cdq = "cd ~/repos/qmk_firmware/";
