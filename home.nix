@@ -262,6 +262,11 @@
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
       export PATH="$XDG_CONFIG_HOME/emacs/bin":$PATH
+
+      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
+      then
+          exec fish -l
+      fi
     '';
     shellAliases = {
       # Directory shortcuts
