@@ -10,7 +10,7 @@ local act = wezterm.action
 return {
   front_end = "WebGpu", -- ensure use of Metal on MacOS
   -- The below does not work properly with nix-based fish.
-  -- default_prog = { "/Users/david/.nix-profile/bin/fish", "-l" },
+  default_prog = { "/Users/david/.nix-profile/bin/fish", "-l" },
   color_scheme = "Catppuccin Latte",
   -- font = wezterm.font("SFMono Nerd Font"),
   font = wezterm.font_with_fallback({
