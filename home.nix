@@ -258,6 +258,7 @@
         expansion = "git commit -m \"%\"";
       };
       "gl" = "git log";
+      "gp" = "git pull";
       "gr" = "git rebase";
       "gits" = "git status";
       "gs" = "git status";
@@ -433,6 +434,7 @@
       # Git Aliases
       # # # # # # #
       gl = "git log";
+      gp = "git pull";
       gs = "git status";
       gits = "git status";
       gitf = "git fetch";
