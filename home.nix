@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -115,6 +116,7 @@
   home.sessionVariables = {
     XDG_CACHE_HOME = "/Users/david/.config/cache";
     XDG_CONFIG_HOME = "/Users/david/.config";
+    XDG_STATE_HOME = "/Users/david/.local/state";
     EDITOR = "~/nvim-macos-arm64/bin/nvim";
     ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
     LEDGER_FILE = "~/finance/2024.journal";
@@ -145,6 +147,34 @@
 
   programs.fish = {
     enable = true;
+    loginShellInit = lib.mkIf pkgs.stdenv.isDarwin ''
+
+      # Nix
+      if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+          source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+          # following is single user
+          # source '/nix/var/nix/profiles/default/etc/profile.d/nix.fish'
+      end
+      # End Nix
+
+      ################### Nix
+      # Essential workaround for clobbered `$PATH` with nix-darwin.
+      # Without this, both Nix and Homebrew paths are forced to the end of $PATH.
+      # <https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1345383219>
+      # <https://github.com/LnL7/nix-darwin/issues/122#issuecomment-1030877541>
+      #
+      # A previous version of this snippet also included:
+      #   - /run/wrappers/bin
+      #   - /etc/profiles/per-user/$USER/bin # mwb needed if useGlobalPkgs used.
+      #
+      if test (uname) = Darwin
+          fish_add_path --prepend --global \
+            "${config.xdg.stateHome}/nix/profile/bin" \
+            /etc/profiles/per-user/$USER/bin \
+            /run/current-system/sw/bin \
+            /nix/var/nix/profiles/default/bin
+      end
+    '';
     interactiveShellInit = ''
       set fish_greeting
 
@@ -152,6 +182,9 @@
 
       # Location for nvm directory, since bass assumes ~/.nvm
       set -gx NVM_DIR ~/.config/nvm
+
+      # This is where nix stores plugin functions.
+      set -ga fish_function_path /Users/david/.nix-profile/share/fish/vendor_functions.d
     '';
     plugins = [
       {
