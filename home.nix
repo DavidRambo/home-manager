@@ -35,6 +35,7 @@
     lazygit
     lsd
     ripgrep
+    sd
     uv
     zoxide
     zsh
