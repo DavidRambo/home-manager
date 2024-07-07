@@ -362,8 +362,13 @@
     settings = {
       # git_status.disabled = true;
       git_status = {
+        format = "([$all_status $ahead_behind]($style) )";
+        ahead = "[⇡\($count\)](green)";
+        behind = "[⇣\($count\)]";
         modified = "[!\($count\)](red)";
-        staged = "[+\($count\)](yellow)";
+        staged = "[+\($count\)](teal)";
+        untracked = "[?\($count\)](maroon)";
+        stashed = "[$](lavender)";
       };
       add_newline = false;
       cmd_duration.disabled = true;
