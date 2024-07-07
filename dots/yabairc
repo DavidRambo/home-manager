@@ -37,7 +37,7 @@ yabai -m config left_padding 2
 yabai -m config right_padding 2
 yabai -m config window_gap 2
 
-yabai -m rule --add app="^(System Settings|Alfred Preferences|Activity Monitor|Dictionary)$" manage=off sticky=off
+yabai -m rule --add app="^(System Settings|Alfred Preferences|Activity Monitor|Dictionary|Finder)$" manage=off sticky=off
 yabai -m rule --add app="^(coconutBattery|Surfshark)$" manage=off sticky=on
 yabai -m rule --add app="^(Things|Messages|Contexts|Peg|Spotify|FaceTime|Installer|zoom.us|Transmission)$" manage=off sticky=off
 
