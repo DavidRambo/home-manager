@@ -41,6 +41,7 @@
     zsh
 
     fish
+    fishPlugins.autopair
     fishPlugins.bass
     fishPlugins.tide
 
@@ -190,24 +191,16 @@
     plugins = [
       {
         name = "tide";
-        src = pkgs.fishPlugins.tide;
-        # one-line output: tide configure --auto --style=Lean --prompt_colors='True color'
-        # --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected
-        # --prompt_spacing=Compact --icons='Few icons' --transient=Yes
+        src = pkgs.fishPlugins.tide.src;
+      }
+      {
+        name = "autopair";
+        src = pkgs.fishPlugins.autopair.src;
       }
       {
         name = "bass";
-        src = pkgs.fishPlugins.bass;
+        src = pkgs.fishPlugins.bass.src;
       }
-      # {
-      #   name = "tide";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "ilancosman";
-      #     repo = "tide";
-      #     rev = "a34b0c2809f665e854d6813dd4b052c1b32a32b4";
-      #     hash = "sha256-ZyEk/WoxdX5Fr2kXRERQS1U1QHH3oVSyBQvlwYnEYyc=";
-      #   };
-      # }
       {
         name = "catppuccin_fish";
         src = pkgs.fetchFromGitHub {
@@ -217,15 +210,6 @@
           hash = "sha256-shQxlyoauXJACoZWtRUbRMxmm10R8vOigXwjxBhG8ng=";
         };
       }
-      # {
-      #   name = "bass";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "edc";
-      #     repo = "bass";
-      #     rev = "79b62958ecf4e87334f24d6743e5766475bcf4d0";
-      #     hash = "sha256-3d/qL+hovNA4VMWZ0n1L+dSM1lcz7P5CQJyy+/8exTc=";
-      #   };
-      # }
       {
         name = "fish-nvm";
         src = pkgs.fetchFromGitHub {
@@ -264,6 +248,7 @@
       "gits" = "git status";
       "gs" = "git status";
       "gss" = "git status --short";
+      "gsw" = "git switch";
 
       # Pipe to grep and place cursor at %.
       "G" = {
@@ -395,11 +380,6 @@
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
       export PATH="$XDG_CONFIG_HOME/emacs/bin":$PATH
-
-      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
-      then
-          exec fish -l
-      fi
 
       eval "$(zoxide init --cmd cd zsh)"
     '';
