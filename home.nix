@@ -360,6 +360,10 @@
     enableTransience = true;
     settings = {
       # git_status.disabled = true;
+      git_status = {
+        modified = "[!\($count\)](red)";
+        staged = "[+\($count\)](yellow)";
+      };
       add_newline = false;
       cmd_duration.disabled = true;
       palette = "catppuccin_latte";
