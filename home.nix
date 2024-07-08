@@ -28,6 +28,7 @@
     alejandra
     bat
     erdtree
+    exercism
     fd
     fzf
     htop
