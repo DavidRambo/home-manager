@@ -184,9 +184,6 @@
 
       # Location for nvm directory, since bass assumes ~/.nvm
       set -gx NVM_DIR ~/.config/nvm
-
-      # This is where nix stores plugin functions.
-      set -ga fish_function_path /Users/david/.nix-profile/share/fish/vendor_functions.d
     '';
     plugins = [
       {
