@@ -117,7 +117,7 @@
   #  /etc/profiles/per-user/david/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    XDG_CACHE_HOME = "/Users/david/.config/cache";
+    XDG_CACHE_HOME = "/Users/david/.cache";
     XDG_CONFIG_HOME = "/Users/david/.config";
     XDG_STATE_HOME = "/Users/david/.local/state";
     EDITOR = "~/nvim-macos-arm64/bin/nvim";
