@@ -1,0 +1,2 @@
+neovim:
+    source ~/repos/macos-scripts/nvim-nightly.sh

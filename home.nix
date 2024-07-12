@@ -76,6 +76,11 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    "justfile".source = dots/justfile;
+    "repos/macos-scripts" = {
+      source = ./macos-scripts;
+      recursive = true;
+    };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -325,9 +330,6 @@
     enable = true;
     userEmail = "davidrambo@mailfence.com";
     userName = "David Rambo";
-    aliases = {
-      ss = "status --short";
-    };
     extraConfig = {
       pull.rebase = "false";
       credential.helper = "osxkeychain";
@@ -416,6 +418,7 @@
       gp = "git pull";
       gs = "git status";
       gits = "git status";
+      gss = "git status --short";
       gitf = "git fetch";
       gita = "git add";
       gitcm = "git commit -m";
