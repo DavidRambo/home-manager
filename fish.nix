@@ -26,13 +26,13 @@
       #   - /run/wrappers/bin
       #   - /etc/profiles/per-user/$USER/bin # mwb needed if useGlobalPkgs used.
       #
-      if test (uname) = Darwin
-          fish_add_path --prepend --global \
-            "${config.xdg.stateHome}/nix/profile/bin" \
-            /etc/profiles/per-user/$USER/bin \
-            /run/current-system/sw/bin \
-            /nix/var/nix/profiles/default/bin
-      end
+      # if test (uname) = Darwin
+      #     fish_add_path --prepend --global \
+      #       "${config.xdg.stateHome}/nix/profile/bin" \
+      #       /etc/profiles/per-user/$USER/bin \
+      #       /run/current-system/sw/bin \
+      #       /nix/var/nix/profiles/default/bin
+      # end
     '';
     interactiveShellInit = ''
       set fish_greeting
