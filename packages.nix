@@ -10,6 +10,7 @@
     just
     lazygit
     lsd
+    pipx
     ripgrep
     sd
     uv
