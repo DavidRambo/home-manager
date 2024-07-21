@@ -38,6 +38,10 @@
   # paths append to ~/.config/
   xdg.configFile = {
     "direnv/direnvrc".source = ./dots/direnvrc;
+    "lsd" = {
+      source = ./dots/lsd;
+      recursive = true;
+    };
     "skhd/skhdrc".source = ./dots/skhdrc;
     "wezterm/wezterm.lua".source = ./dots/wezterm.lua;
     "yabai/yabairc".source = ./dots/yabairc;
