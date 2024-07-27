@@ -7,9 +7,12 @@
     fd
     fzf
     htop
+    http-prompt
     just
     lazygit
     lsd
+    mongosh
+    nodePackages_latest.pnpm
     pipx
     ripgrep
     sd
