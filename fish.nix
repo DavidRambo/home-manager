@@ -118,6 +118,9 @@
 
       "pn" = "pnpm";
 
+      "rc" = "ruff check";
+      "rf" = "ruff check --fix";
+
       "uvv" = "uv venv venv";
       "sv" = "source venv/bin/activate.fish";
     };
