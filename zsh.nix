@@ -21,7 +21,7 @@
     initExtra = ''
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
-      export PATH="$XDG_CONFIG_HOME/emacs/bin":$PATH
+      export PATH="/Users/david/.local/bin:$XDG_CONFIG_HOME/emacs/bin":$PATH
 
       eval "$(zoxide init --cmd cd zsh)"
     '';

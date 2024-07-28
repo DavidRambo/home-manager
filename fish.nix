@@ -41,6 +41,8 @@
 
       # Location for nvm directory, since bass assumes ~/.nvm
       set -gx NVM_DIR ~/.config/nvm
+
+      fish_add_path ~/.local/bin
     '';
     plugins = [
       {
