@@ -4,7 +4,6 @@
     bat
     erdtree
     exercism
-    fd
     fzf
     htop
     http-prompt
