@@ -121,8 +121,8 @@
       "rc" = "ruff check";
       "rf" = "ruff check --fix";
 
-      "uvv" = "uv venv venv";
-      "sv" = "source venv/bin/activate.fish";
+      "uvv" = "uv venv";
+      "sv" = "source .venv/bin/activate.fish";
     };
     shellAliases = {
       "cdc" = "cd ~/repos/code_projects/";
