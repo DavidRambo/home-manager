@@ -9,7 +9,7 @@ use_nvm() {
 }
 
 layout_uv() {
-    if [[ -d "venv" ]]; then
+    if [[ -d ".venv" ]]; then
         VIRTUAL_ENV="$(pwd)/.venv"
     fi
 
