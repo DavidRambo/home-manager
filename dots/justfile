@@ -1,5 +1,5 @@
 lazy:
-    nvim --headless "+Lazy! sync" +qa
+    ~/nvim-macos-arm64/bin/nvim --headless "+Lazy! sync" +qa
 
 neovim:
     source ~/repos/macos-scripts/nvim-nightly.sh
