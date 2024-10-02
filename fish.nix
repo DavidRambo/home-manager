@@ -123,7 +123,7 @@
       "rc" = "ruff check";
       "rf" = "ruff check --fix";
 
-      "uvv" = "uv venv";
+      "uvv" = "uv venv --python python"; # python is symlinked to uv's installed Python binary
       "sv" = "source .venv/bin/activate.fish";
     };
     shellAliases = {
