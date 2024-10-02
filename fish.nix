@@ -43,6 +43,8 @@
       set -gx NVM_DIR ~/.config/nvm
 
       fish_add_path ~/.local/bin
+
+      uv generate-shell-completion fish | source
     '';
     plugins = [
       {
