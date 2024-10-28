@@ -45,6 +45,8 @@
       fish_add_path ~/.local/bin
 
       uv generate-shell-completion fish | source
+
+      set -Ua fish_user_paths "$HOME/.rye/shims"
     '';
     plugins = [
       {
