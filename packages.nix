@@ -5,6 +5,7 @@
     erdtree
     exercism
     fzf
+    helix
     htop
     http-prompt
     just
