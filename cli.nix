@@ -64,10 +64,8 @@
     };
   };
 
-  programs.pyenv = {
+  programs.go = {
     enable = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
   };
 
   programs.zoxide = {
