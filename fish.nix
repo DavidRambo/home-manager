@@ -46,7 +46,7 @@
 
       uv generate-shell-completion fish | source
 
-      set -Ua fish_user_paths "$HOME/.rye/shims"
+      pyenv init - | source
     '';
     plugins = [
       {

@@ -15,7 +15,6 @@
     nodePackages_latest.pnpm
     pipx
     ripgrep
-    rye
     sd
     uv
     zoxide
