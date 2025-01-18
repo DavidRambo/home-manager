@@ -120,6 +120,8 @@
       "hla" = "hledger add";
       "ht" = "hledger -f $HOME/notes/time_ledger.timedot bal";
 
+      "nv" = "nvim";
+
       "pn" = "pnpm";
 
       "rc" = "ruff check";
@@ -147,9 +149,6 @@
       "lla" = "lsd -la";
       # "lt" = "ls --tree";
       "l." = "lsd -d .* --color=auto";
-
-      "nvim" = "~/nvim-macos-arm64/bin/nvim";
-      "nv" = "~/nvim-macos-arm64/bin/nvim";
 
       "nvf" = "nv ~/.config/fish/config.fish";
       "nvfa" = "nv ~/.config/fish/alias.fish";

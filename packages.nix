@@ -11,6 +11,7 @@
     just
     lazygit
     lsd
+    neovim
     nodePackages_latest.pnpm
     pipx
     ripgrep
