@@ -11,7 +11,6 @@
     just
     lazygit
     lsd
-    mongosh
     nodePackages_latest.pnpm
     pipx
     ripgrep
