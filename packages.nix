@@ -17,6 +17,7 @@
     ripgrep
     sd
     uv
+    zola
     zoxide
     zsh
 
