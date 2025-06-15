@@ -44,6 +44,7 @@
 
       fish_add_path ~/.local/bin
       fish_add_path $XDG_CONFIG_HOME/emacs/bin
+      fish_add_path ~/.cargo/bin
 
       uv generate-shell-completion fish | source
 

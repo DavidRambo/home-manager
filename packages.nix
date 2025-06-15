@@ -15,6 +15,7 @@
     nodePackages_latest.pnpm
     pipx
     ripgrep
+    rustup
     sd
     uv
     zola
