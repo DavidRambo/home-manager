@@ -84,6 +84,9 @@
       }
     ];
     shellAbbrs = {
+      "cr" = "cargo run";
+      "ct" = "cargo test";
+      "clip" = "cargo clippy";
       "cat" = "bat";
       "cd" = "z";
       "cdi" = "zi";
