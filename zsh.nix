@@ -18,7 +18,7 @@
         file = ".p10k.zsh";
       }
     ];
-    initExtra = ''
+    initContent = ''
       source ~/.config/zsh/catppuccin-syntax/themes/catppuccin_latte-zsh-syntax-highlighting.zsh
 
       export PATH="/Users/david/.local/bin:$XDG_CONFIG_HOME/emacs/bin:~/.cargo/bin":$PATH
