@@ -51,18 +51,17 @@
 
   programs.git = {
     enable = true;
-    userEmail = "davidrambo@mailfence.com";
-    userName = "David Rambo";
-    extraConfig = {
+    settings = {
+      user.email = "davidrambo@mailfence.com";
+      user.name = "David Rambo";
       pull.rebase = "false";
       credential.helper = "osxkeychain";
       init.defaultBranch = "main";
       github.user = "DavidRambo";
     };
-    difftastic = {
-      enable = true;
-    };
   };
+
+  programs.difftastic.enable = true;
 
   programs.go = {
     enable = true;
