@@ -73,8 +73,8 @@
     XDG_CACHE_HOME = "/Users/david/.cache";
     XDG_CONFIG_HOME = "/Users/david/.config";
     XDG_STATE_HOME = "/Users/david/.local/state";
-    ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
     EDITOR = "~/.nix-profile/bin/nvim";
+    ZDOTDIR = "/Users/david/.config/zsh";
     LEDGER_FILE = "~/finance/2024.journal";
   };
 

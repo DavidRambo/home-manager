@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.zsh = {
     enable = true;
-    dotDir = "$XDG_CONFIG_HOME/zsh";
+    dotDir = "/Users/david/.config/zsh";
     # history.path = "$ZDOTDIR/.zsh_history";
     enableCompletion = true;
     autosuggestion.enable = true;
