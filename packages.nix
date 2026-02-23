@@ -33,7 +33,6 @@
     jq
     # python3
     qemu
-    samba
     socat
     swtpm
     # usbutils  # not available on aarch64.darwin
