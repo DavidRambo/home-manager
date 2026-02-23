@@ -132,6 +132,7 @@
       "rc" = "ruff check";
       "rf" = "ruff check --fix";
 
+      "urp" = "uv run python"; # This is an alternative to using `pyenv global`
       "uvv" = "uv venv --python python"; # python is symlinked to uv's installed Python binary
       "sv" = "source .venv/bin/activate.fish";
     };
