@@ -7,7 +7,6 @@
     fzf
     helix
     htop
-    http-prompt
     just
     lazygit
     lsd
