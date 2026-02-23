@@ -5,7 +5,6 @@
     erdtree
     exercism
     fzf
-    helix
     htop
     just
     lazygit
