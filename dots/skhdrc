@@ -3,16 +3,16 @@
 # Window Movement
 # # # # # # # # #
 # focus window
-lalt - n : yabai -m window --focus west
-lalt - i : yabai -m window --focus east
-lalt - u : yabai -m window --focus north
-lalt - e : yabai -m window --focus south
+lalt - h : yabai -m window --focus west
+lalt - e : yabai -m window --focus east
+lalt - o : yabai -m window --focus north
+lalt - a : yabai -m window --focus south
 
 # warp managed window
-shift + lalt - n : yabai -m window --warp west
-shift + lalt - i : yabai -m window --warp east
-shift + lalt - u : yabai -m window --warp north
-shift + lalt - e : yabai -m window --warp south
+shift + lalt - h : yabai -m window --warp west
+shift + lalt - e : yabai -m window --warp east
+shift + lalt - o : yabai -m window --warp north
+shift + lalt - a : yabai -m window --warp south
 
 # swap managed window
 #shift + lctrl + lalt - n : yabai -m window --swap west
@@ -22,13 +22,13 @@ shift + lalt - e : yabai -m window --warp south
 
 # resize window
 # increase width
-shift + lalt + lctrl - n : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
+shift + lalt + lctrl - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
 # decrease width
-shift + lalt + lctrl - i : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
+shift + lalt + lctrl - e : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
 # increase height
-shift + lalt + lctrl - e : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
+shift + lalt + lctrl - a : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
 # decrease height
-shift + lalt + lctrl - u : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
+shift + lalt + lctrl - o : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
 
 
 # Spaces
@@ -42,8 +42,8 @@ shift + lalt + lctrl - u : yabai -m window south --resize top:0:-20 2> /dev/null
 # shift + lcmd - tab : yabai -m space --focus prev || yabai -m space --focus last
 
 # change window space
-lctrl + lalt - h : yabai -m window --space prev; yabai -m space --focus prev
-lctrl + lalt - o : yabai -m window --space next; yabai -m space --focus next
+lctrl + lalt - y : yabai -m window --space prev; yabai -m space --focus prev
+lctrl + lalt - i : yabai -m window --space next; yabai -m space --focus next
 lalt - 1 : yabai -m space --focus 1
 lalt - 2 : yabai -m space --focus 2
 lalt - 3 : yabai -m space --focus 3
@@ -70,7 +70,7 @@ lalt - g : yabai -m window --toggle float;\
            yabai -m window --grid 16:8:2:1:4:13
 
 # toggle split orientation relative to parent
-lalt - o : yabai -m window --toggle split
+lalt - s : yabai -m window --toggle split
 
 # rotate windows
 lalt - r : yabai -m space --rotate 90

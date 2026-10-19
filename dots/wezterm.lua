@@ -58,10 +58,10 @@ return {
     -- Pane keymaps
     { key = "s", mods = "CTRL|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { key = "v", mods = "CTRL|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "n", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
-    { key = "i", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
-    { key = "u", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
-    { key = "e", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
+    { key = "h", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
+    { key = "e", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
+    { key = "o", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
+    { key = "a", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
     { key = "r", mods = "CTRL|SHIFT", action = act.RotatePanes("Clockwise") },
   },
 }
