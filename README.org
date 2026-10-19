@@ -17,3 +17,8 @@ Either reference this repository here or via its local path on the system.
 For instance:
 
 : nix run github:DavidRambo/home-manager
+
+** Updating
+To update packages, run ~nix flake update~.
+
+Then, to switch to the modified nix profile, run the same command as when changes are made to the configuration: ~home-manager switch~.
