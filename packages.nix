@@ -10,7 +10,6 @@
     lazygit
     lsd
     neovim
-    nodePackages_latest.pnpm
     pipx
     ripgrep
     rustup
@@ -36,6 +35,8 @@
     swtpm
     # usbutils  # not available on aarch64.darwin
     zsync
+
+    qmk
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

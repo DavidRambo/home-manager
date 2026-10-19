@@ -45,6 +45,7 @@
       fish_add_path ~/.local/bin
       fish_add_path $XDG_CONFIG_HOME/emacs/bin
       fish_add_path ~/.cargo/bin
+      fish_add_path /opt/homebrew/sbin
 
       uv generate-shell-completion fish | source
 
@@ -143,7 +144,7 @@
       "cdf" = "cd ~/.config/fish";
       "cdn" = "cd ~/notes/";
       "cdnv" = "cd ~/.config/nvim/";
-      "cdq" = "cd ~/repos/qmk_firmware/";
+      "cdq" = "cd ~/repos/qmk_userspace/";
       "cdw" = "cd ~/.config/wezterm/";
 
       "el" = "erd -H -L 1";

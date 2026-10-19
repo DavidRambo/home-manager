@@ -23,12 +23,14 @@
 
       export PATH="/Users/david/.local/bin:$XDG_CONFIG_HOME/emacs/bin:~/.cargo/bin":$PATH
 
+      export PATH="/opt/homebrew/sbin:$PATH"
+
       eval "$(zoxide init --cmd cd zsh)"
     '';
     shellAliases = {
       # Directory shortcuts
       cdn = "cd ~/notes/";
-      cdq = "cd ~/repos/qmk_firmware/";
+      cdq = "cd ~/repos/qmk_userspace/";
       cdd = "cd ~/repos/dnr-hugo/";
       cdz = "cd $ZDOTDIR";
       cde = "cd $XDG_CONFIG_HOME/doom";
